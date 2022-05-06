@@ -1,0 +1,12 @@
+
+***********How to Add Camera in Mujoco**********
+
+
+
+model = load_model_from_path("test.xml")
+sim = MjSim(model)
+
+ ## a is a tuple if depth is True and a numpy array if depth is False ##
+a = sim.render(width=200, height=200, camera_name='rgb'   ('frontview', 'birdview', 'agentview', 'sideview', 'robot0_robotview', 'robot0_eye_in_hand')  , depth=True)
+rgb_img = a[0]
+depth_img = a[1]
