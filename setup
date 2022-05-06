@@ -1,0 +1,27 @@
+name: DynamicGrasp
+channels:
+  - defaults
+dependencies:
+  - python= ???
+  - pytorch or tensorflow **************
+  - torchvision
+  - cudatoolkit= ???
+  - absl-py
+  - pyparsing
+  - pip
+  - pip:
+    - pillow== ???
+    - termcolor
+    - imageio
+    - imageio-ffmpeg
+    - opencv-python
+    - xmltodict
+    - scikit-image
+    - seaborn
+    - tqdm
+    - gym
+    - mujoco-py
+    - kornia
+    - einops
+
++ - Extra
