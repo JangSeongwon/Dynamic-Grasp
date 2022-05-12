@@ -8,4 +8,17 @@ Solution : Go to directory anaconda3/envs/(env name)/lib/python?.?(version)/site
 Solution : It is problem from Graphic card. Go to bashrc and add 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia-384'     
 
 
-3. Error of 
+3. Error of [ module 'gym' has no attribute 'GoalEnv' ]
+
+Solution : It is problem from gym version. Install gym again by 'pip install gym==0.21.0'
+
+4. Error of [ No module named 'cv2' ]
+
+Solution : 'pip install opencv-python'
+
+
+
+
+
+
+
