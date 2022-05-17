@@ -15,7 +15,7 @@ from utils.transform_utils import convert_quat
 from environments.panda import PandaEnv
 
 from models.arena import TableArena
-from models.objects import CubeObject, BasePartObject, CylObject, Cyl2Object
+from models.objects import CubeObject, Object1, Cyl2Object, Camera3rdview
 from models.robot import Panda
 from models.task import GraspingTask
 
@@ -23,7 +23,7 @@ import hjson
 import os
 
 
-class PandaGrasp(PandaEnv):
+class Pandagrasping(PandaEnv):
     """
     This class corresponds to the grasping task for the 🐼️ robot arm.
     """
@@ -54,15 +54,16 @@ class PandaGrasp(PandaEnv):
 
         # define mujoco objects
         Cube = CubeObject()
-        Base = BasePartObject() # This object has no function in learning its just for viewing purpose
+        Camera3rd = Camera3rdview()
+        Object = Object1()
 
-        self.mujoco_objects = OrderedDict([("BasePart", Base), ("Cube", Cube)])
+        self.mujoco_objects = OrderedDict([("Cube", Cube), ("Camera3rd", Camera3rd),("Object1",Object)])
 
         # For collision avoidance scenario
         if self.config.mode == 2:
             Cylinder = CylObject()
             Cylinder2 = Cyl2Object()
-            self.mujoco_objects = OrderedDict([("BasePart", Base), ("Cube", Cube), ("Cylinder", Cylinder), ("Cylinder2", Cylinder2)])
+            self.mujoco_objects = OrderedDict([("Cube", Cube), ("Cylinder", Cylinder), ("Cylinder2", Cylinder2)])
 
         # task includes arena, robot, and objects of interest
         self.model = GraspingTask(self.mujoco_arena, self.mujoco_robot, self.mujoco_objects)
@@ -115,9 +116,13 @@ class PandaGrasp(PandaEnv):
         self.sim.data.qpos[16:19] = np.array([0 ,-0.1 ,0.85])
         self.sim.data.qpos[19:23] = np.array([1 ,0 ,0, 0])
 
-        # Random Base Part
-        self.sim.data.qpos[9:12] = np.array([0 ,0.1 ,0.82])
+        # Camera3rdview
+        self.sim.data.qpos[9:12] = np.array([1 ,1 ,0.5])
         self.sim.data.qpos[12:16] = np.array([1 ,0 ,0, 0])
+
+        # Pivot Standard
+        self.sim.data.qpos[23:26] = np.array([0.25, 0.05, 0.9])
+        self.sim.data.qpos[26:30] = np.array([1, 0, 0, 0])
 
         if self.config.mode == 2:
             # reset cylinders pos
