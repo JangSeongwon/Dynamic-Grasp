@@ -1,4 +1,7 @@
 conda env grasp
 
 
+conda version : 4.10.3
+
+Use python version : 3.8.13
 
