@@ -1,5 +1,8 @@
 # Basic modules
 # 4개의 함수 기본
+
+# 동일 class에서 obs를 정의하여 여기에 넣어 보냄
+
 """ Into class PandaEnv(MujocoEnv) """
 def render_obs(self, mode=None, width=448, height=448, camera_id=None):
     self._render_callback()
