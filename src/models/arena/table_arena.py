@@ -7,7 +7,7 @@ from utils.mjcf_utils import array_to_string, string_to_array
 class TableArena(Arena):
     """Workspace that contains a tabletop."""
 
-    def __init__(self, table_full_size=(0.35, 0.6, 0.02), table_friction=(1, 0.005, 0.0001)):
+    def __init__(self, table_full_size=(0.8, 0.6, 0.02), table_friction=(1, 0.005, 0.0001)):
         """
         Args:
             table_full_size: full dimensions of the table
