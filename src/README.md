@@ -10,7 +10,7 @@ Information :
 3. rl/log : ReplayBuffer & checkpoint Data
 
 
-4. Config
+4. Config/init : Train / Evaluate 
 
 
 5. rl/rollouts : Can change timestep per episode 
