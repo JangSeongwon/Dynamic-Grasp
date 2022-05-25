@@ -1,6 +1,6 @@
 Basic modules
 
-""" Into class Pandagrasping """
+""" Into class PandaEnv(MujocoEnv) """
 def render_obs(self, mode=None, width=448, height=448, camera_id=None):
     self._render_callback()
     data = []
