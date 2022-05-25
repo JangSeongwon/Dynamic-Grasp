@@ -1,5 +1,5 @@
-Basic modules
-
+# Basic modules
+# 4개의 함수 기본
 """ Into class PandaEnv(MujocoEnv) """
 def render_obs(self, mode=None, width=448, height=448, camera_id=None):
     self._render_callback()
@@ -20,7 +20,7 @@ def render_obs(self, mode=None, width=448, height=448, camera_id=None):
         else:
             img = self.sim.render(width, height, camera_name=cam, depth=False)[::-1, :, :]
         data.append(img)    # 빈 행렬에 image를 벡터안에 추가
-    return np.asarray(data)   # asarray : 복사본없이 생성 
+    return np.asarray(data)   # asarray : 복사본없이 생성
 
 def render(self, mode='human', width=500, height=500, depth=False, camera_id=0):
     return super(BaseEnv, self).render(mode, width, height)
@@ -29,4 +29,5 @@ def render(self, mode='human', width=500, height=500, depth=False, camera_id=0):
 def _get_image_obs(self):
     return self.render_obs(mode='rgb_array', width=self.image_size, height=self.image_size)
 
-
+def _render_callback(self):
+    self.sim.forward()
