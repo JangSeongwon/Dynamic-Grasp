@@ -34,7 +34,7 @@ class Pandagrasping(PandaEnv):
 
         # settings for table top
         self.config = config
-        self.table_full_size = config.table_full_size
+        self.table_full_size = config.table_full_size\
 
         # Load the controller parameter configuration files
         controller_filepath = os.path.join(os.path.dirname(__file__), '..','config/controller_config.hjson')
@@ -52,10 +52,9 @@ class Pandagrasping(PandaEnv):
 
         # define mujoco objects
         Cube = CubeObject()
-        Camera3rd = Camera3rdview()
-        Object = Object1()
+        #Object = Object1()
 
-        self.mujoco_objects = OrderedDict([("Cube", Cube), ("Camera3rd", Camera3rd),("Object1",Object)])
+        self.mujoco_objects = OrderedDict([("Cube", Cube)])
 
         # For collision avoidance scenario
         if self.config.mode == 2:
@@ -110,17 +109,20 @@ class Pandagrasping(PandaEnv):
 
         # reset position of objects on table top
 
-        # Cube
-        self.sim.data.qpos[16:19] = np.array([0 ,-0.1 ,0.85])
-        self.sim.data.qpos[19:23] = np.array([1 ,0 ,0, 0])
+        """Cube"""
+        #self.sim.model.body_pos[self.cube_body_id] = np.array([0 ,0 ,0.8]) #0.75
 
-        # Camera3rdview
-        self.sim.data.qpos[9:12] = np.array([1 ,1 ,0.5])
+        self.sim.data.qpos[9:12] = np.array([0 ,0 ,0.8]) #0.75
         self.sim.data.qpos[12:16] = np.array([1 ,0 ,0, 0])
 
-        # Pivot Standard
-        self.sim.data.qpos[23:26] = np.array([0.25, 0.05, 0.9])
-        self.sim.data.qpos[26:30] = np.array([1, 0, 0, 0])
+        #self.sim.data.qvel[self.cube_body_id] = np.random.randn(3) * 0.1
+
+        # Extra Objects
+        #self.sim.data.qpos[9:12] = np.array([10 ,10 ,5])
+        #self.sim.data.qpos[12:16] = np.array([1 ,0 ,0, 0])
+        #self.sim.data.qpos[16:19] = np.array([0.25, 0.05, 0.7])
+        #self.sim.data.qpos[19:23] = np.array([1, 0, 0, 0])
+
 
         if self.config.mode == 2:
             # reset cylinders pos
@@ -133,6 +135,10 @@ class Pandagrasping(PandaEnv):
         # reset the phase and grasp state
         self.phase = 0
         self.has_grasp = False
+
+    #def objectvelocity(self):
+    #   self.sim.data.qvel[9:12]=np.random.randn(3)
+
 
     def reward(self, action=None):
         """
@@ -261,5 +267,9 @@ class Pandagrasping(PandaEnv):
         di["gripper_to_cube"] = gripper_site_pos - cube_pos
 
         state["object-state"] = np.concatenate([cube_pos, cube_quat, di["gripper_to_cube"]])
+
+        """2개만 랜덤으로 모양나오게 """
+        self.sim.data.qvel[9:12] = np.random.randn(3)*(0.5,1,0.5)
+        self.sim.data.qvel[12:16] = np.random.randn(3)*0.1
 
         return state
