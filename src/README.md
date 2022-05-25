@@ -5,15 +5,15 @@ Information :
 
 2. Use wandb : Data Evaluation 
                 Entity : jj22jjj3
-                Project name : Pandagrasping
+                Project name : Pandagrasping1
 
-3.
-
-
-4.
+3. rl/log : ReplayBuffer & checkpoint Data
 
 
-5.
+4. Config
+
+
+5. rl/rollouts : Can change timestep per episode 
 
 
 6.
