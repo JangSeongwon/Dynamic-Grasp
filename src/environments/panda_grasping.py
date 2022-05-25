@@ -268,7 +268,7 @@ class Pandagrasping(PandaEnv):
 
         state["object-state"] = np.concatenate([cube_pos, cube_quat, di["gripper_to_cube"]])
 
-        """2개만 랜덤으로 모양나오게 """
+        """ 랜덤으로 속도형성,  """
         self.sim.data.qvel[9:12] = np.random.randn(3)*(0.5,1,0.5)
         self.sim.data.qvel[12:16] = np.random.randn(3)*0.1
 
