@@ -29,30 +29,9 @@
         <mesh name="link5_vis" file="meshes/link5_vis.stl" />
         <mesh name="link6_vis" file="meshes/link6_vis.stl" />
         <mesh name="link7_vis" file="meshes/link7_vis.stl" />
-        <mesh file="meshes/pedestal.stl" name="pedestal"/>
     </asset>
     <worldbody>
         <body name="link0" pos="0 0 0">
-            <body name="base" pos="0 0 0">
-                <inertial diaginertia="0 0 0" mass="0" pos="0 0 0"/>
-                <body name="controller_box" pos="0 0 0">
-                    <inertial diaginertia="1.71363 1.27988 0.809981" mass="46.64" pos="-0.325 0 -0.38"/>
-                    <geom pos="-0.325 0 -0.38" size="0.11 0.2 0.265" type="box" name="controller_box_col"/>
-                </body>
-                <body name="pedestal_feet" pos="0 0 0">
-                    <inertial diaginertia="8.16095 9.59375 15.0785" mass="167.09" pos="-0.1225 0 -0.758"/>
-                    <geom pos="-0.1225 0 -0.758" size="0.385 0.35 0.155" type="box" name="pedestal_feet_col"/>
-                </body>
-                <body name="torso" pos="0 0 0">
-                    <inertial diaginertia="1e-08 1e-08 1e-08" mass="0.0001" pos="0 0 0"/>
-                    <geom conaffinity="0" contype="0" group="1" rgba="0.2 0.2 0.2 1" size="0.05 0.05 0.05" type="box" name="torso_col"/>
-                </body>
-                <body name="pedestal" pos="0 0 0">
-                    <inertial diaginertia="6.0869 5.81635 4.20915" mass="60.864" pos="0 0 0" quat="0.659267 -0.259505 -0.260945 0.655692"/>
-                    <geom conaffinity="0" contype="0" group="1" mesh="pedestal" pos="0.26 0.345 -0.91488" quat="0.5 0.5 -0.5 -0.5" rgba="0.2 0.2 0.2 1" type="mesh" name="pedestal_col1"/>
-                    <geom pos="-0.02 0 -0.29" rgba="0.2 0.2 0.2 1" size="0.18 0.31" type="cylinder" name="pedestal_col2"/>
-                </body>
-            </body>
             <inertial pos="0 0 0.05" mass="4" diaginertia="0.4 0.4 0.4" />
             <geom type="mesh" contype="0" conaffinity="0" group="1" mesh="link0_vis" name="link0_visual" rgba="1 1 1 1"/>
             <geom type="mesh" group="0" mesh="link0" name="link0_collision"/>
