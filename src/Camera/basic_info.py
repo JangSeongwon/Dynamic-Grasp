@@ -34,3 +34,4 @@ def _get_image_obs(self):
 
 def _render_callback(self):
     self.sim.forward()
+    
