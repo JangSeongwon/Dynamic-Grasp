@@ -1,0 +1,36 @@
+
+""" Mujoco Camera rendering Codes """
+
+img = self.sim.render(camera_name='activecamera', width=16, height=16, depth=False)
+
+
+self.get_head_cam_viewer().render(width, height, device_id)
+data = self.get_head_cam_viewer().read_pixels(width, height, depth=False)
+return data[::-1, :, :]
+
+
+import mujoco_py
+import os
+import cv2
+import numpy as np
+
+# load scene in MuJoCo
+path = os.path.join('your', 'path', 'model.xml')
+model = mujoco_py.load_model_from_path(path)
+sim = mujoco_py.MjSim(model)
+
+# to speed up computation we need the off screen rendering
+viewer = mujoco_py.MjRenderContextOffscreen(sim, 0)
+for i in range(3):
+    viewer.render(420, 380, 0)
+    data = np.asarray(viewer.read_pixels(420, 380, depth=False)[::-1, :, :], dtype=np.uint8)
+
+    # save data
+    if data is not None:
+        cv2.imwrite("test{0}.png".format(i), data)
+
+    print(i)
+    sim.step()
+    
+    
+    
