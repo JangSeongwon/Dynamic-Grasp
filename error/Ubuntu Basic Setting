@@ -43,4 +43,14 @@ sudo ln -s /usr/lib/x86_64-linux-gnu/libGL.so.1 /usr/lib/x86_64-linux-gnu/libGL.
 pip3 install -U 'mujoco-py<2.2,>=2.1'
 cd examples
 python3 setting_state.py
+--------------------------------------------------------------------------------------
+
+pip install wandb
+pip install colorlog
+pip install hjson
+
+
+--------------------------------------------------------------------------------------
+
+
 
