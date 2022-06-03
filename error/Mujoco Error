@@ -5,7 +5,7 @@ Solution : Go to directory anaconda3/envs/(env name)/lib/python?.?(version)/site
 
 2. Error of [ Failed to initialize OpenGl ]
 
-Solution : It is problem from Graphic card. Go to bashrc and add 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia-384'     
+Solution :    
 
 
 3. Error of [ module 'gym' has no attribute 'GoalEnv' ]
