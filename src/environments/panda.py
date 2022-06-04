@@ -11,16 +11,8 @@ import hjson
 
 
 class PandaEnv(MujocoEnv):
-    """Initializes a Panda robot environment."""
 
     def __init__(self, config, controller_config_file):
-        """
-        Args:
-            All configuratin parameters are defined in config file
-
-            controller_config_file (str): filepath to the corresponding controller config file that contains the
-            associated controller parameters
-        """
         self.control_freq = config.control_freq
         self.has_gripper = config.gripper_type is not None
         self.gripper_visualization = config.gripper_visualization
@@ -30,12 +22,6 @@ class PandaEnv(MujocoEnv):
         super().__init__(config)
 
     def _load_controller(self, controller_type, controller_file):
-        """
-        Loads controller to be used for dynamic trajectories
-        Controller_type is a specified controller, and controller_params is a config file containing the appropriate
-        parameters for that controller
-        """
-        # Load the controller config file
         try:
             with open(controller_file) as f:
                 params = hjson.load(f)
@@ -46,9 +32,6 @@ class PandaEnv(MujocoEnv):
         self.controller = JointVelocityController(**controller_params)
 
     def _load_model(self):
-        """
-        Loads robot and add gripper.
-        """
         super()._load_model()
         # Use xml that has motor torque actuators enabled
         self.mujoco_robot = Panda(xml_path="robot/panda/robot_torque.xml")
@@ -156,9 +139,6 @@ class PandaEnv(MujocoEnv):
         return ret
 
     def _get_observation(self):
-        """
-        Returns an OrderedDict containing robot observations
-        """
 
         state = super()._get_observation()
         di = OrderedDict()
@@ -189,48 +169,34 @@ class PandaEnv(MujocoEnv):
 
     @property
     def observation_space(self):
-        """
-        Returns dict where keys are ob names and values are dimensions.
-        """
         ob_space = OrderedDict()
         observation = self._get_observation()
         ob_space['object-state'] = [observation['object-state'].size]
-        ob_space['robot-state'] =  [observation['robot-state'].size]
+        ob_space['robot-state'] = [observation['robot-state'].size]
+        ob_space['camera_rgb-state'] = [observation['camera_rgb-state'].size]
+        ob_space['camera_depth-state'] = [observation['camera_depth-state'].size]
         return ob_space
 
     @property
     def dof(self):
-        """
-        Returns the DoF of the robot (with grippers).
-        """
         dof = self.controller.action_dim
-
         if self.has_gripper:
             dof += self.gripper.dof
             return dof
 
     @property
     def action_space(self):
-        """
-        Returns ActionSpec of action space, see
-        action_spec.py for more documentation.
-        """
         return ActionSpace(self.dof)
 
 
     def _gripper_visualization(self):
-        """
-        Do any needed visualization here.
-        """
 
         # By default, don't do any coloring.
         self.sim.model.site_rgba[self.eef_site_id] = [0., 1., 0., 1.]
 
 
     def _check_q_limits(self):
-        """
-        Returns True if the arm is in joint limits or very close to.
-        """
+
         joint_limits = False
         tolerance = 0.15
         for (q, q_limits) in zip(self.sim.data.qpos[self._ref_joint_pos_indexes], self.sim.model.jnt_range[:7]):
