@@ -48,7 +48,7 @@ python3 setting_state.py
 pip install wandb
 pip install colorlog
 pip install hjson
-
+pip install cv2
 
 --------------------------------------------------------------------------------------
 
