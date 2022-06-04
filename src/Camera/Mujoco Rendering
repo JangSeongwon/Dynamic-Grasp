@@ -1,0 +1,38 @@
+
+"""Python Data Visualaize"""
+import matplotlib.pyplot as plt
+
+-------------------------------------------------------------------------
+
+data = []
+width1 = 640
+height1 = 640
+img = self.sim.render( width1, height1, camera_name='activecamera', depth=True)
+rgb=img[0][::-1, :, :]
+depth=img[1]
+print(rgb)
+print(rgb.shape)
+print(depth)
+print(depth.shape)
+
+plt.imshow(rgb)
+plt.show()
+
+data.append(img)
+
+
+
+-------------------------------------------------------------------------
+
+
+
+
+
+
+
+-------------------------------------------------------------------------
+
+
+
+
+
