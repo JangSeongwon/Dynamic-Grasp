@@ -16,7 +16,7 @@ Information :
 5. rl/rollouts : Can change timestep per episode 
 
 
-6.
+6. rl : Training algorithms and 실행 File
 
 
 7.
