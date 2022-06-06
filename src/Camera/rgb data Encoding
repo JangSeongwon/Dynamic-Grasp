@@ -1,0 +1,30 @@
+    """CNN Encoding"""
+
+    def encoding_rgb(self):
+        rgb = self.render_obs()
+        # Form = ([1,84,84,3])
+        #v = torch.tensor(rgb)
+        #print(v.shape)
+
+        rgb = rgb.squeeze(0)
+        # Form = ([84,84,3])
+        #v = torch.tensor(rgb)
+        #print(v.shape)
+
+        # Form = ([3,84,84])
+        to_tensor = transforms.ToTensor()
+        rgb = to_tensor(rgb)
+        torch.permute(rgb, (1, 2, 0))
+        rgb = rgb.unsqueeze(0)
+        # Form = ([1,84,84,3])
+        #v = torch.tensor(rgb)
+        #print(v.shape)
+
+        Class = cnn.CNN()
+        rgb_data=Class.forward(rgb)
+        #print(rgb_data)
+
+        return np.asarray(rgb_data)
+
+
+
