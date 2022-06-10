@@ -3,20 +3,39 @@
 Solution : Go to directory anaconda3/envs/(env name)/lib/python?.?(version)/site-packages/ and add gym/envs/robotics by hand
 
 
+-----------------------------------------------------------------------------------------------------------------------------------------
+
 2. Error of [ Failed to initialize OpenGl ]
 
-Solution :    
+Solution : Either CUDA+mujoco_py version update problem or add to bashrc 'export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so'
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
 
 
 3. Error of [ module 'gym' has no attribute 'GoalEnv' ]
 
 Solution : It is problem from gym version. Install gym again by 'pip install gym==0.21.0'
 
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
 4. Error of [ No module named 'cv2' ]
 
 Solution : 'pip install opencv-python'
 
 
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+5. Error of downloaded mujoco200 but looks for mujoco210
+
+Solution : With very high probability, problem of mujoco_py version
+            For mujoco200, Need this version : pip install -U 'mujoco-py<2.1,>=2.0'  
+            
+            
+-----------------------------------------------------------------------------------------------------------------------------------------
 
 
 
