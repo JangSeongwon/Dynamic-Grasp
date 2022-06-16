@@ -41,6 +41,8 @@ conda activate mujoco_py
 sudo apt install libosmesa6-dev libgl1-mesa-glx libglfw3
 sudo ln -s /usr/lib/x86_64-linux-gnu/libGL.so.1 /usr/lib/x86_64-linux-gnu/libGL.so
 pip3 install -U 'mujoco-py<2.2,>=2.1'
+
+pip3 install -U 'mujoco-py<2.1,>=2.0' for Mujoco200
 cd examples
 python3 setting_state.py
 --------------------------------------------------------------------------------------
