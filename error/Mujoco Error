@@ -8,7 +8,17 @@ Solution : Go to directory anaconda3/envs/(env name)/lib/python?.?(version)/site
 2. Error of [ Failed to initialize OpenGl ]
 
 Solution : Either CUDA+mujoco_py version update problem or add to bashrc 'export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so'
+But for anaconda environment : " export LD_PRELOAD=/home/jang/anaconda3/grasp/envs/lib/x86_64-linux-gnu/libGLEW.so "
 
+And need to install
+conda install -c conda-forge glew
+conda install -c anaconda mesa-libegl-cos6-x86_64
+conda install -c anaconda cmake
+conda install -c anaconda libx11-devel-cos6-x86_64
+conda install -c conda-forge xorg-libx11
+conda install -c anaconda libglu
+conda install -c anaconda freeglut
+conda install -c conda-forge glfw
 
 -----------------------------------------------------------------------------------------------------------------------------------------
 
