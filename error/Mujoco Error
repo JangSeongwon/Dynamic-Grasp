@@ -49,7 +49,7 @@ Solution : With very high probability, problem of mujoco_py version
 
 6. Error of mujoco license not being recognized although it is installed
 
-Solution : reboot
+Solution : reboot or new terminal
 
 
 
