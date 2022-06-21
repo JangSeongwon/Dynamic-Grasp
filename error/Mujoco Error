@@ -20,6 +20,8 @@ conda install -c anaconda libglu
 conda install -c anaconda freeglut
 conda install -c conda-forge glfw
 
+conda install -c conda-forge mesalib
+
 -----------------------------------------------------------------------------------------------------------------------------------------
 
 
