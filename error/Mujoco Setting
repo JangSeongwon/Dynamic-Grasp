@@ -50,7 +50,10 @@ python3 setting_state.py
 pip install wandb
 pip install colorlog
 pip install hjson
-pip install cv2
+pip install h5py
+pip install tqdm
+pip install scipy
+pip install matplotlib
 
 --------------------------------------------------------------------------------------
 
