@@ -1,0 +1,17 @@
+
+<camera mode="fixed" name="activecamera" pos="0 -0.06 0.05" euler="3.14159265358979 0 1.570796327" fovy="100"/>
+
+fovy = Zoom -(in) / +(out) 
+
+euler = " x y z " (In radian)
+x-axis : Look at top bottom
+y-axis : Look at the side
+z-axis : z rotation
+
+pos = " x y z "
+x-axis : +(go to right side) -(go to left side)
+y-axis : +(go backwards, manipulator direction) -(go to front) 
+z-axis : +(go downwards) -(go upwards)
+
+
+
