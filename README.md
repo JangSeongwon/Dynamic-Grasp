@@ -1,7 +1,10 @@
 # Dynamic-Grasp
 -------------
 Grasping movng objects using robot
+-------------
 
+During Rl run,
+nvidia-smi -q (Check GPU temperature)
 
 ------
 
